@@ -1,6 +1,7 @@
 <p style="color: green"><%= notice %></p>
 
 <%= render @restaurant %>
+<%= render partial: 'reviews/new', locals: { restaurant: @restaurant, review: @review  } %>
 
 <p><strong>Reviews</strong></p>
 <ul class="list-group">
@@ -8,7 +9,7 @@
     <li class="list-group-item">
       <%= review.content %>
       <%= link_to "Delete",
-        review_path(review),
+        restaurant_review_path(review),
         data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
       %>
     </li>
@@ -18,6 +19,7 @@
 
 <div>
   <%= link_to "Edit this restaurant", edit_restaurant_path(@restaurant) %> |
+  <%# <%= link_to "Leave a review", new_restaurant_review_path %>
   <%= link_to "Back to restaurants", restaurants_path %>
 
   <%= button_to "Destroy this restaurant", @restaurant, method: :delete %>
