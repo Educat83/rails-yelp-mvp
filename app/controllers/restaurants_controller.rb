@@ -5,8 +5,7 @@ class RestaurantsController < ApplicationController
     @restaurants = Restaurant.all
   end
 
-  def show
-  end
+  def show; end
 
   def new
     @restaurant = Restaurant.new
@@ -22,8 +21,7 @@ class RestaurantsController < ApplicationController
     end
   end
 
-  def edit
-  end
+  def edit; end
 
   def update
     if @restaurant.update(restaurant_params)
@@ -33,7 +31,10 @@ class RestaurantsController < ApplicationController
     end
   end
 
-
+  def destroy
+    @restaurant.destroy
+    redirect_to restaurants_url, notice: 'Restaurant was successfully destroyed.'
+  end
 
   private
 
